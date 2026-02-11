@@ -10,7 +10,7 @@ local get_node_text = vim.treesitter.query.get_node_text
 ---@param bufnr integer
 ---@return string # text of the node
 function M.get_node_text(node, bufnr)
-  return vim.treesitter.query.get_node_text(node, bufnr)
+  return vim.treesitter.get_node_text(node, bufnr)
 end
 
 ---Queries the language for a given buffer
