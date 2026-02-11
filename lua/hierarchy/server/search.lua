@@ -56,7 +56,7 @@ local function finalize_search(search_id, handler)
 
   local item = cache[search_id].ctx.params.item
   local method_name = (item.kind == 12 and item.name) or nil
-  local query = vim.treesitter.query.parse_query(
+  local query = vim.treesitter.query.parse(
       utils.get_lang(), '(function_definition) @capture'
     )
 
