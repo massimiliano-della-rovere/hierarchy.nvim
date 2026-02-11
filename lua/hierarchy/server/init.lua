@@ -38,7 +38,7 @@ function M.request(bufnr, method, params, handler)
   -- if a method is unknown by the native LSP client, it's supported.
   local supported_clients = {}
   local method_supported = false
-    local clients = vim.lsp.get_clients({ buffer = bufnr })
+  local clients = vim.lsp.get_clients({ buffer = bufnr })
   for _, client in ipairs(clients) do
     -- 'unknown' ⇒ true workaround
     if client.supports_method(method) and client.supports_method('textDocument/prepareTypeHierarchy') then
