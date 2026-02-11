@@ -1,8 +1,8 @@
 --[[ ──────────────────────── imports and aliases ───────────────────────── ]]--
 ---@module 'docs'
 
-local prepare = RELOAD('hierarchy.server.prepare')
-local utils = RELOAD('hierarchy.server.utils')
+local prepare = require('hierarchy.server.prepare')
+local utils = require('hierarchy.server.utils')
 
 local validate = vim.validate
 
