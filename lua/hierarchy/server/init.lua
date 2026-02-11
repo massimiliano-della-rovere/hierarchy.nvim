@@ -40,8 +40,7 @@ function M.request(bufnr, method, params, handler)
   local method_supported = false
   vim.lsp.for_each_buffer_client(bufnr, function(client, client_id)
     -- 'unknown' ⇒ true workaround
-    local method_known = vim.lsp._request_name_to_capability[method]
-    if method_known and client.supports_method('textDocument/prepareTypeHierarchy') then
+    if client.supports_method(method) and client.supports_method('textDocument/prepareTypeHierarchy') then
       method_supported = true
       table.insert(supported_clients, client_id)
     end
