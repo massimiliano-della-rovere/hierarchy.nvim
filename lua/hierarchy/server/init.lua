@@ -68,7 +68,11 @@ end
 
 
 local function type_hierarchy(method, handler)
-  local params = vim.lsp.util.make_position_params()
+  local bufnr = 0
+  local win_id = vim.fn.win_findbuf(bufnr)[1] or 0
+  local client = vim.lsp.get_clients({ bufnr = bufnr })[1]
+  local position_encoding = (client and client.position_encoding) or "utf-16"
+  local params = vim.lsp.util.make_position_params(win_id, position_encoding)
   local prepare_method = 'textDocument/prepareTypeHierarchy'
   M.request(0, prepare_method, params, function(err, result, ctx, config)
     if not result then
