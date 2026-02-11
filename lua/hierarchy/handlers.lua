@@ -38,9 +38,11 @@ function M.load_quickfix(err, result, ctx, config)
   local qf_items = {}
   for _, item in ipairs(items) do
     local bufnr = vim.fn.bufadd(vim.uri_to_fname(item.uri))
+    local client = vim.lsp.get_clients({ bufnr = bufnr })[1]
+    local position_encoding = (client and client.position_encoding) or "utf-16"
 
     -- Create a quickfix list item
-    qf_item = vim.lsp.util.symbols_to_items({item}, bufnr)[1]
+    qf_item = vim.lsp.util.symbols_to_items({item}, bufnr, position_encoding)[1]
 
     -- Prefix the class name for methods
     if ctx.params.item.kind == 12 then  -- Function
