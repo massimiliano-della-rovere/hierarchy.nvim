@@ -38,14 +38,15 @@ function M.request(bufnr, method, params, handler)
   -- if a method is unknown by the native LSP client, it's supported.
   local supported_clients = {}
   local method_supported = false
-  vim.lsp.for_each_buffer_client(bufnr, function(client, client_id)
+  local clients = vim.lsp.get_clients({ buffer = bufnr })
+  for _, client in ipairs(clients) do
     -- 'unknown' ⇒ true workaround
-    local method_known = vim.lsp._request_name_to_capability[method]
-    if method_known and client.supports_method('textDocument/prepareTypeHierarchy') then
+    if client.supports_method(method) and client.supports_method('textDocument/prepareTypeHierarchy') then
       method_supported = true
-      table.insert(supported_clients, client_id)
+      table.insert(supported_clients, client.id)
     end
-  end)
+  end
+
 
   if method_supported then
     return vim.lsp.buf_request(bufnr, method, params, handler)
@@ -68,7 +69,11 @@ end
 
 
 local function type_hierarchy(method, handler)
-  local params = vim.lsp.util.make_position_params()
+  local bufnr = 0
+  local win_id = vim.fn.win_findbuf(bufnr)[1] or 0
+  local client = vim.lsp.get_clients({ bufnr = bufnr })[1]
+  local position_encoding = (client and client.position_encoding) or "utf-16"
+  local params = vim.lsp.util.make_position_params(win_id, position_encoding)
   local prepare_method = 'textDocument/prepareTypeHierarchy'
   M.request(0, prepare_method, params, function(err, result, ctx, config)
     if not result then

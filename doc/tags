@@ -1,0 +1,17 @@
+hiearchy.nvim	hierarchy.txt	/*hiearchy.nvim*
+hierarchy-custom-handlers	hierarchy.txt	/*hierarchy-custom-handlers*
+hierarchy-interface	hierarchy.txt	/*hierarchy-interface*
+hierarchy-intro	hierarchy.txt	/*hierarchy-intro*
+hierarchy-position-params	hierarchy.txt	/*hierarchy-position-params*
+hierarchy-prepare-handler	hierarchy.txt	/*hierarchy-prepare-handler*
+hierarchy-prepare-params	hierarchy.txt	/*hierarchy-prepare-params*
+hierarchy-prepare-request	hierarchy.txt	/*hierarchy-prepare-request*
+hierarchy-requests	hierarchy.txt	/*hierarchy-requests*
+hierarchy-subtypes-request	hierarchy.txt	/*hierarchy-subtypes-request*
+hierarchy-supertypes-request	hierarchy.txt	/*hierarchy-supertypes-request*
+hierarchy-types-handler	hierarchy.txt	/*hierarchy-types-handler*
+hierarchy-types-params	hierarchy.txt	/*hierarchy-types-params*
+hierarchy.handlers.jump_first()	hierarchy.txt	/*hierarchy.handlers.jump_first()*
+hierarchy.handlers.load_quickfix()	hierarchy.txt	/*hierarchy.handlers.load_quickfix()*
+hierarchy.handlers.quickfix()	hierarchy.txt	/*hierarchy.handlers.quickfix()*
+hierarchy.supertypes()	hierarchy.txt	/*hierarchy.supertypes()*
